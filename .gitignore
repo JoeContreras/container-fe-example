@@ -28,3 +28,4 @@ yarn-error.log*
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/vcs.xml
 /yarn.lock
+/.idea/git_toolbox_prj.xml

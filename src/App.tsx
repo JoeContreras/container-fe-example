@@ -10,8 +10,24 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const CounterAppOne = React.lazy(() => import("app1/CounterAppOne"));
-const CounterAppTwo = React.lazy(() => import("app2/CounterAppTwo"));
+// const CounterAppOne = React.lazy(() => import("app1/CounterAppOne"));
+// const CounterAppTwo = React.lazy(() => import("app2/CounterAppTwo"));
+// const Navigation = React.lazy(() => import("header/Navigation"));
+export const lazy = (componentImportFn: Function) =>
+  React.lazy(async () => {
+    let obj = await componentImportFn();
+    return typeof obj.default === "function" ? obj : obj.default;
+  });
+// const Navigation = lazy(() => import("header/Navigation"));
+// const CounterAppOne = lazy(() => import("app1/CounterAppOne"));
+// const CounterAppTwo = lazy(() => import("app2/CounterAppTwo"));
+
+const CounterAppOne = React.lazy(
+  async () => await import("app1/CounterAppOne")
+);
+const CounterAppTwo = React.lazy(
+  async () => await import("app2/CounterAppTwo")
+);
 
 const App = () => (
   <>
@@ -23,11 +39,6 @@ const App = () => (
       p="0"
       flexDirection="column"
     >
-      {/*
-      <Box color="#fff" position="fixed" right="0" top="0" mr="2rem" mt="2rem">
-        Latest Build Date: <Text fontWeight="bold">{version}</Text>
-      </Box>
-*/}
       <Flex
         border="1px solid #151421"
         borderRadius="1rem"

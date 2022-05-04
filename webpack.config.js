@@ -23,6 +23,10 @@ module.exports = (env, argv) => {
           loader: "ts-loader",
           exclude: /node_modules/,
         },
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
       ],
     },
 
@@ -36,6 +40,7 @@ module.exports = (env, argv) => {
         remotes: {
           app1: "app1@http://localhost:3001/remoteEntry.js",
           app2: "app2@http://localhost:3002/remoteEntry.js",
+          header: "header@http://localhost:3003/remoteEntry.js",
         },
         shared: {
           ...deps,

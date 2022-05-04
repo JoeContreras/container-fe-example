@@ -11,3 +11,9 @@ declare module "app2/CounterAppTwo" {
 
   export default CounterAppTwo;
 }
+
+declare module "header/Navigation" {
+  const Navigation: React.ComponentType;
+
+  export default Navigation;
+}
